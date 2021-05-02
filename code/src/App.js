@@ -1,9 +1,12 @@
 import React from 'react'
 
+import Messages from './components/Messages';
+
 export const App = () => {
   return (
-    <div>
-      Find me in src/app.js!
-    </div>
+    <>
+      Write a new message: -
+      <Messages />
+    </>
   )
 }
