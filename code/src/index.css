@@ -72,6 +72,12 @@ body {
   width: 100%;
   box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1);
 }
+.textarea.error {
+  border: 2px solid #f74343;
+}
+.error-message {
+  color: #f74343;
+}
 .textarea:disabled {
   opacity: 0.4;
 }

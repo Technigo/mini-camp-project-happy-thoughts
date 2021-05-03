@@ -8,17 +8,21 @@ const SendThought = ({ setThoughts }) => {
   function handleSubmit(e) {
     e.preventDefault();
 
-    console.log(message);
-
     fetch('https://happy-thoughts-technigo.herokuapp.com/thoughts', {
       method: 'POST',
       headers: { 'Content-type': 'application/json' },
       body: JSON.stringify({ message })
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw Error(res.statusText);
+        }
+        return res.json()
+      })
       .then((newMessage) => {
         setThoughts((previousMessages) => [newMessage, ...previousMessages]);
-      });
+      })
+      .catch((err) => console.log(err.message));
     updateMessage('');
   }
   return (
@@ -30,7 +34,12 @@ const SendThought = ({ setThoughts }) => {
         name="textarea-new-thought"
         aria-label="textarea-new-thought"
         onChange={handleChange} />
-      <button type="submit" className="submit-thought">Send Happy Thought</button>
+      <button
+        type="submit"
+        className="submit-thought"
+        disabled={message.length < 5}>
+          Send Happy Thought
+      </button>
     </form>
   )
 };
