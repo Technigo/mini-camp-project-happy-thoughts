@@ -10,7 +10,6 @@ const Thought = (props) => {
     console.log('submit like to API and set state');
     setLiked((prev) => !prev);
   }
-  console.log(liked);
   return (
     <li key={props.id} className="thought">
       {props.message}

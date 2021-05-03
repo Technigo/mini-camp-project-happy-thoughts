@@ -14,11 +14,13 @@ export const App = () => {
       .then((data) => setThoughts(data))
       .catch((err) => console.log(err))
       .finally(() => setLoading(false));
-  }, []);
+  }, [], thoughts);
   return (
-    <>
-      <SendThought />
-      <section id="thoughts">
+    <div className="wrapper">
+      <section id="send-thought">
+        <SendThought setThoughts={setThoughts} />
+      </section>
+      <section id="all-thoughts">
         {loading && <p>Data is loading</p>}
         {!loading && (
           <ul className="list-thoughts">
@@ -35,6 +37,6 @@ export const App = () => {
           </ul>
         )}
       </section>
-    </>
+    </div>
   )
 }

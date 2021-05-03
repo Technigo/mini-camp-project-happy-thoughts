@@ -40,3 +40,30 @@ body {
   margin: 0;
   padding: 0;
 }
+.textarea {
+  background-color: #fff;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 500;
+  color: #333333;
+  border: 2px solid rgb(228, 228, 228);
+  padding: 6px;
+  padding-left: 10px;
+  border-style: solid;
+  border-radius: 10px;
+  height: 100px;
+  width: 100%;
+  box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+}
+.textarea:disabled {
+  opacity: 0.4;
+}
+.textarea:hover:not(:disabled),
+.textarea:focus {
+  border: 2px solid #2279EB;
+  outline: none;
+  background: #f3f8ff;
+}
+.textarea::placeholder {
+  color: #ccc;
+}
