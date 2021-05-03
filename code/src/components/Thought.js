@@ -6,9 +6,16 @@ dayjs.extend(relativeTime)
 
 const Thought = (props) => {
   const [liked, setLiked] = useState(false);
+  const [likes, setLikes] = useState(props.hearts);
   function handleClickLike() {
-    console.log('submit like to API and set state');
     setLiked((prev) => !prev);
+    if (!liked) {
+      setLikes((prev) => prev + 1);
+      console.log('api call: add');
+    } else {
+      setLikes((prev) => prev - 1);
+      console.log('api call: remove');
+    }
   }
   return (
     <li key={props.id} className="thought">
@@ -16,8 +23,8 @@ const Thought = (props) => {
       <br />
       {dayjs(props.date).fromNow()}
       <br />
-      {!liked && <button type="button" className="button-like" onClick={handleClickLike}>{props.hearts}</button>}
-      {liked && <button type="button" className="button-like liked" onClick={handleClickLike}>{props.hearts}</button>}
+      {!liked && <button type="button" className="button-like" onClick={handleClickLike}>{likes}</button>}
+      {liked && <button type="button" className="button-like liked" onClick={handleClickLike}>{likes}</button>}
     </li>
   )
 };

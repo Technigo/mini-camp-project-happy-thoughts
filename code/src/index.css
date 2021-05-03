@@ -12,12 +12,22 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-size: 14px;
 }
-.list-thoughts {
+#send-thought,
+#all-thoughts {
   padding: 0;
   margin: 0 auto;
   position: relative;
   width: 80%;
   max-width: 600px;
+}
+#send-thought {
+  padding-top: 20px;
+  margin-bottom: 20px;
+}
+.list-thoughts {
+  padding: 0;
+  margin: 0;
+  width: 100%;
 }
 .thought {
   position: relative;
@@ -33,12 +43,19 @@ body {
 .button-like {
   position: relative;
   border: none;
-  background: none;
+  background: url(assets/heart-outline.svg) no-repeat;
   -webkit-appearance: none;
   border-radius: none;
   font-size: 14px;
   margin: 0;
   padding: 0;
+  width: 24px;
+  height: 24px;
+  text-indent: 30px;
+  cursor: pointer;
+}
+.button-like.liked {
+  background: url(assets/heart-fill.svg) no-repeat;
 }
 .textarea {
   background-color: #fff;
