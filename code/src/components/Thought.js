@@ -8,14 +8,12 @@ const Thought = (props) => {
   const [liked, setLiked] = useState(false);
   const [likes, setLikes] = useState(props.hearts);
   function handleClickLike() {
-    setLiked((prev) => !prev);
-    if (!liked) {
-      setLikes((prev) => prev + 1);
-      console.log('api call: add');
-    } else {
-      setLikes((prev) => prev - 1);
-      console.log('api call: remove');
-    }
+    setLiked(true);
+    setLikes((prev) => prev + 1);
+    fetch(`https://happy-thoughts-technigo.herokuapp.com/thoughts/${props.id}/like`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' }
+    })
   }
   return (
     <li key={props.id} className="thought">
@@ -23,8 +21,7 @@ const Thought = (props) => {
       <br />
       {dayjs(props.date).fromNow()}
       <br />
-      {!liked && <button type="button" className="button-like" onClick={handleClickLike}>{likes}</button>}
-      {liked && <button type="button" className="button-like liked" onClick={handleClickLike}>{likes}</button>}
+      <button type="button" className={`button-like ${liked ? 'liked' : ''}`} onClick={handleClickLike}>{likes}</button>
     </li>
   )
 };
