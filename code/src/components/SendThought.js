@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 
 const SendThought = ({ setThoughts }) => {
   const [message, updateMessage] = useState('');
+  const charactersLeft = 144 - message.length;
   const handleChange = (e) => {
     updateMessage(e.target.value);
   }
@@ -19,14 +20,15 @@ const SendThought = ({ setThoughts }) => {
         }
         return res.json()
       })
-      .then((newMessage) => {
-        setThoughts((previousMessages) => [newMessage, ...previousMessages]);
+      .then((data) => {
+        setThoughts((prevData) => [data, ...prevData]);
       })
       .catch((err) => console.log(err.message));
     updateMessage('');
   }
   return (
     <form onSubmit={handleSubmit}>
+      <div className="characters-left">{charactersLeft}</div>
       <textarea
         value={message}
         className="textarea"
@@ -36,8 +38,8 @@ const SendThought = ({ setThoughts }) => {
         onChange={handleChange} />
       <button
         type="submit"
-        className="submit-thought"
-        disabled={message.length < 5}>
+        className="button-submit-thought"
+        disabled={message.length < 5 || message.length > 144}>
           Send Happy Thought
       </button>
     </form>

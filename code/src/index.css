@@ -11,6 +11,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 14px;
+  background-color: #fdf3f3;
 }
 #send-thought,
 #all-thoughts {
@@ -31,17 +32,48 @@ body {
 }
 .thought {
   position: relative;
-  background: rgba(255,255,255,1);
-  border-radius: 10px;
-  border: 1px solid #dcdcdc;
-  padding: 30px;
+  background: #fff;
+  border-radius: 16px;
   width: 100%;
-  box-shadow: 0px 3px 5px rgba(75, 75, 75, 0.1);
   list-style: none;
   margin-bottom: 20px;
+  transition: all .3s ease;
+  overflow: hidden;
+  border: 1px solid rgb(255,137,137,0.2);
 }
-.button-like {
-  position: relative;
+.thought-like-link {
+  padding: 30px;
+  display: block;
+  text-decoration: none;
+  color: #333;
+}
+.thought:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 5px 10px rgb(255,137,137,0.15);
+}
+.thought.liked {
+  background-color: #ffcbcb;
+  transform: scale(1.05);
+}
+.thought.liked a .thought-date {
+  color: #b77d7d;
+}
+.thought.liked a .thought-message {
+  color: #542626;
+}
+.thought-message {
+  font-size: 26px;
+  line-height: 28px;
+  font-weight: 600;
+  display: block;
+}
+.thought-date {
+  color: #bababa;
+  font-size: 16px;
+  display: block;
+}
+.heart {
+  position: absolute;
   border: none;
   background: url(assets/heart-outline.svg) no-repeat;
   -webkit-appearance: none;
@@ -49,13 +81,19 @@ body {
   font-size: 14px;
   margin: 0;
   padding: 0;
-  width: 24px;
+  min-width: 24px;
+  width: auto;
   height: 24px;
   text-indent: 30px;
   cursor: pointer;
+  top: 20px;
+  right: 35px;
 }
-.button-like.liked {
+.heart.liked {
   background: url(assets/heart-fill.svg) no-repeat;
+}
+#send-thought {
+  text-align: center;
 }
 .textarea {
   background-color: #fff;
@@ -72,21 +110,31 @@ body {
   width: 100%;
   box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1);
 }
-.textarea.error {
-  border: 2px solid #f74343;
-}
-.error-message {
-  color: #f74343;
-}
 .textarea:disabled {
   opacity: 0.4;
 }
 .textarea:hover:not(:disabled),
 .textarea:focus {
-  border: 2px solid #2279EB;
   outline: none;
   background: #f3f8ff;
 }
 .textarea::placeholder {
   color: #ccc;
+}
+.button-submit-thought {
+  background-color: #ffcbcb;
+  color: #542626;
+  font-size: 26px;
+  line-height: 28px;
+  font-weight: 600;
+  padding: 10px;
+  border-radius: 16px;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.button-submit-thought:disabled {
+  opacity: .5;
+  cursor: default;
 }

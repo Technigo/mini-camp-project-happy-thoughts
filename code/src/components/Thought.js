@@ -7,21 +7,25 @@ dayjs.extend(relativeTime)
 const Thought = (props) => {
   const [liked, setLiked] = useState(false);
   const [likes, setLikes] = useState(props.hearts);
-  function handleClickLike() {
-    setLiked(true);
-    setLikes((prev) => prev + 1);
-    fetch(`https://happy-thoughts-technigo.herokuapp.com/thoughts/${props.id}/like`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' }
-    })
+  function handleClickLike(e) {
+    e.preventDefault();
+    if (!liked) {
+      fetch(`https://happy-thoughts-technigo.herokuapp.com/thoughts/${props.id}/like`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' }
+      })
+        .then(setLiked(true))
+        .then(setLikes((data) => data + 1))
+        .catch((err) => console.log(err));
+    }
   }
   return (
-    <li key={props.id} className="thought">
-      {props.message}
-      <br />
-      {dayjs(props.date).fromNow()}
-      <br />
-      <button type="button" className={`button-like ${liked ? 'liked' : ''}`} onClick={handleClickLike}>{likes}</button>
+    <li key={props.id} className={`thought ${liked ? 'liked' : ''}`}>
+      <a href="#" onClick={handleClickLike} className="thought-like-link">
+        <span className="thought-message">{props.message}</span>
+        <span className="thought-date">{dayjs(props.date).fromNow()}</span>
+        <div className={`heart ${liked ? 'liked' : ''}`}>{likes}</div>
+      </a>
     </li>
   )
 };
