@@ -27,7 +27,7 @@ const SendThought = ({ setThoughts }) => {
     updateMessage('');
   }
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="form-send-thought" onSubmit={handleSubmit}>
       <div className="characters-left">{charactersLeft}</div>
       <textarea
         value={message}

@@ -18,10 +18,11 @@ export const App = () => {
   return (
     <div className="wrapper">
       <section id="send-thought">
+        <h1>What is making you happy right now?</h1>
         <SendThought setThoughts={setThoughts} />
       </section>
       <section id="all-thoughts">
-        {loading && <p>Data is loading</p>}
+        {loading && <div className="loading">Loading happy thoughts..</div>}
         {!loading && (
           <ul className="list-thoughts">
             {thoughts.map((thought) => (
