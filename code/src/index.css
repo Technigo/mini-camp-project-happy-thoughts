@@ -81,6 +81,8 @@ h1 {
   line-height: 28px;
   font-weight: 600;
   display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .thought-date {
   color: #bababa;
@@ -172,4 +174,9 @@ h1 {
   font-weight: 600;
   color: #542626;
   padding-top: 100px;
+}
+@media only screen and (max-width: 600px) {
+  #send-thought, #all-thoughts {
+    width: 95%; 
+  }
 }
