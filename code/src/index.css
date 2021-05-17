@@ -111,6 +111,7 @@ h1 {
 .liked .heart {
   background: url(assets/heart-fill-liked.svg) no-repeat;
   color: #d85c5c;
+  cursor: default;
 }
 #send-thought {
   text-align: center;
