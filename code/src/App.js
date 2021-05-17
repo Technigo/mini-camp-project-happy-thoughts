@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 
 import SendThought from './components/SendThought';
 import Thought from './components/Thought';
@@ -6,7 +6,13 @@ import Thought from './components/Thought';
 export const App = () => {
   const [thoughts, setThoughts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [myLikes, setMyLikes] = useState([]);
 
+  useEffect(() => {
+    if (localStorage.getItem('likedThoughts')) {
+      setMyLikes(JSON.parse(localStorage.getItem('likedThoughts')))
+    }
+  }, [])
   useEffect(() => {
     setLoading(true);
     fetch('https://happy-thoughts-technigo.herokuapp.com/thoughts')
@@ -15,6 +21,11 @@ export const App = () => {
       .catch((err) => console.log(err))
       .finally(() => setLoading(false));
   }, [], thoughts);
+  useEffect(() => {
+    if (myLikes.length > 0) {
+      localStorage.setItem('likedThoughts', JSON.stringify(myLikes));
+    }
+  }, [myLikes]);
   return (
     <div className="wrapper">
       <section id="send-thought">
@@ -33,7 +44,9 @@ export const App = () => {
                 id={thought._id}
                 message={thought.message}
                 date={thought.createdAt}
-                hearts={thought.hearts} />
+                hearts={thought.hearts}
+                setMyLikes={setMyLikes}
+                myLikes={myLikes} />
             ))}
           </ul>
         )}

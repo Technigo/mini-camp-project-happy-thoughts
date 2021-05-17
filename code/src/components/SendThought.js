@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
-const SendThought = ({ setThoughts }) => {
+const SendThought = (props) => {
   const [message, updateMessage] = useState('');
   const charactersLeft = 144 - message.length;
   const handleChange = (e) => {
@@ -18,10 +18,10 @@ const SendThought = ({ setThoughts }) => {
         if (!res.ok) {
           throw Error(res.statusText);
         }
-        return res.json()
+        return res.json();
       })
       .then((data) => {
-        setThoughts((prevData) => [data, ...prevData]);
+        props.setThoughts((prevData) => [data, ...prevData]);
       })
       .catch((err) => console.log(err.message));
     updateMessage('');

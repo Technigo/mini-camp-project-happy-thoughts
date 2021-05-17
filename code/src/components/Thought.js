@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
-import dayjs from 'dayjs'
-import relativeTime from 'dayjs/plugin/relativeTime'
+import React, { useState } from 'react';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
 
-dayjs.extend(relativeTime)
+dayjs.extend(relativeTime);
 
 const Thought = (props) => {
   const [liked, setLiked] = useState(false);
   const [likes, setLikes] = useState(props.hearts);
+  const myLikes = props.myLikes.includes(props.id);
   function handleClickLike(e) {
     e.preventDefault();
     if (!liked) {
@@ -16,15 +17,16 @@ const Thought = (props) => {
       })
         .then(setLiked(true))
         .then(setLikes((data) => data + 1))
+        .then(props.setMyLikes((prevValue) => [...prevValue, props.id]))
         .catch((err) => console.log(err));
     }
   }
   return (
-    <li key={props.id} className={`thought ${liked ? 'liked' : ''}`}>
+    <li key={props.id} className={`thought ${myLikes || liked ? 'liked' : ''}`}>
       <a href="#" onClick={handleClickLike} className="thought-like-link">
         <span className="thought-message">{props.message}</span>
         <span className="thought-date">{dayjs(props.date).fromNow()}</span>
-        <div className={`heart ${liked ? 'liked' : ''}`}>{likes}</div>
+        <div className="heart">{likes}</div>
       </a>
     </li>
   )

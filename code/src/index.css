@@ -108,7 +108,7 @@ h1 {
   font-weight: 500;
   color: #bababa;
 }
-.heart.liked {
+.liked .heart {
   background: url(assets/heart-fill-liked.svg) no-repeat;
   color: #d85c5c;
 }
@@ -177,6 +177,6 @@ h1 {
 }
 @media only screen and (max-width: 600px) {
   #send-thought, #all-thoughts {
-    width: 95%; 
+    width: 90%; 
   }
 }
