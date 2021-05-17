@@ -1,0 +1,83 @@
+.message {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 1.25rem 1.5rem 1.5rem 1.5rem;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  transition: all 200ms;
+}
+
+.message:first-child {
+  border-radius: 12px 12px 0 0;
+  border-top: 1px solid #ddd;
+}
+
+.message:last-child {
+  border-radius: 0 0 12px 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+.message .title {
+  font-size: 1.2rem;
+  line-height: 1.4em;
+  margin-bottom: 0.5rem;
+  padding-right: 1.5em;
+  word-break: break-word;
+}
+
+.message .created {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.heart {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border: 1px solid #dde;
+  background: none;
+  text-align: center;
+  cursor: pointer;
+  font-size: 0.75rem;
+  color: #7787ab;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  padding: 0.35rem 0.75rem;
+  border-radius: 8px;
+}
+
+.heart svg {
+  margin-right: 0.5rem;
+  transition: transform 200ms;
+}
+
+.heart:disabled {
+  cursor: default;
+  pointer-events: none;
+  color: #335;
+}
+
+.heart:disabled svg path {
+  fill: #e76035;
+  stroke: #c54013;
+}
+
+.heart:hover {
+  border-color: #aab;
+}
+
+.heart:hover svg {
+  transform: scale(1.1);
+}
+.heart:hover svg path {
+  stroke: #c54013;
+}
+
+.heart svg path {
+  stroke-width: 2px;
+  stroke: #a7b3d3;
+}

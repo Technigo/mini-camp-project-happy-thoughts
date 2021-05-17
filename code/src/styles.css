@@ -1,0 +1,72 @@
+* {
+  box-sizing: border-box;
+  font-family: "ABeeZee", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 400;
+  background-color: #f9f9fc;
+  transition: background 200ms;
+  font-family: "ABeeZee", sans-serif;
+}
+
+.App {
+  padding: 0 16px;
+  width: 100vw;
+  max-width: 480px;
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  flex-direction: column;
+  margin: 24px auto;
+}
+
+.themeswitch {
+  display: flex;
+  margin-bottom: 1.5rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.themeswitch h1 {
+  font-size: 1.75rem;
+  color: #335;
+}
+
+.themeswitch button {
+  overflow: hidden;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  flex-wrap: no-wrap;
+  width: 28px;
+  height: 28px;
+  border-radius: 100%;
+  transform: rotateZ(-45deg) rotateY(0) scale(1);
+  transition: all 300ms ease-in-out;
+  border: 2px solid #ccd;
+  outline: none;
+}
+
+.themeswitch .half {
+  display: block;
+  flex-basis: 50%;
+  height: 36px;
+}
+
+.themeswitch .half:first-child {
+  background-color: #335;
+}
+
+.themeswitch .half:last-child {
+  background-color: #f9f9fc;
+}
+@media (hover: hover) {
+  .themeswitch button:hover {
+    transform: rotateZ(-45deg) rotateY(30deg) scale(1.2);
+    box-shadow: -12px 4px 4px rgba(0, 0, 0, 0.15);
+    border-color: #335;
+  }
+}
