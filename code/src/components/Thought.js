@@ -11,7 +11,6 @@ const Thought = (props) => {
   function handleClickLike(e) {
     e.preventDefault();
     if (!myLikes) {
-      console.log('click');
       fetch(`https://happy-thoughts-technigo.herokuapp.com/thoughts/${props.id}/like`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' }
