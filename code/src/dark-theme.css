@@ -1,0 +1,180 @@
+/* ----- DARK MODE --------*/
+@media (prefers-color-scheme: dark) {
+  body:not(.is-forced-light) {
+    background-color: #112;
+  }
+
+  body:not(.is-forced-light) h1 {
+    color: #ccd !important;
+  }
+
+  body:not(.is-forced-light) .messages {
+    box-shadow: 0 8px 8px 8px rgba(0, 0, 0, 0.25);
+  }
+
+  body:not(.is-forced-light) .message {
+    background-color: #1a1a2f;
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+
+  body:not(.is-forced-light) .message .title {
+    color: #ddf;
+  }
+
+  body:not(.is-forced-light) .submit {
+    background-color: #25305a;
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 8px 8px rgba(0, 0, 0, 0.25);
+  }
+
+  body:not(.is-forced-light) .submit textarea {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #ddf;
+  }
+
+  body:not(.is-forced-light) .submit textarea:focus {
+    box-shadow: inset 0 0 0 1px #557;
+  }
+
+  body:not(.is-forced-light) .is-dark .submit textarea::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  body:not(.is-forced-light) .submit button {
+    color: rgba(255, 255, 255, 1);
+  }
+
+  body:not(.is-forced-light) .submit .bar button:disabled {
+    color: rgba(255, 255, 255, 0.3);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+
+  body:not(.is-forced-light) .submit .characterCount {
+    color: rgba(255, 255, 255, 0.35);
+  }
+
+  body:not(.is-forced-light) .submit .characterCount b {
+    color: #ddf;
+  }
+
+  body:not(.is-forced-light) .message:first-child {
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  body:not(.is-forced-light) .message:last-child {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  body:not(.is-forced-light) .themeswitch button {
+    transform: rotateZ(-45deg) rotateY(180deg);
+    border-color: #446;
+  }
+  @media (hover: hover) {
+    body:not(.is-forced-light) .themeswitch button:hover {
+      transform: rotateZ(-45deg) rotateY(210deg) scale(1.2);
+      border-color: #eef;
+    }
+  }
+
+  body:not(.is-forced-light) .themeswitch button .half:first-child {
+    background-color: #112;
+  }
+
+  body:not(.is-forced-light) .messages .heart {
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  body:not(.is-forced-light) .messages .heart:disabled {
+    color: #eef;
+  }
+}
+
+/* ------------- Forced mode ------------- */
+
+body.is-forced-dark {
+  background-color: #112;
+}
+
+body.is-forced-dark h1 {
+  color: #ccd !important;
+}
+
+body.is-forced-dark .messages {
+  box-shadow: 0 8px 8px 8px rgba(0, 0, 0, 0.25);
+}
+
+body.is-forced-dark .message {
+  background-color: #1a1a2f;
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+body.is-forced-dark .message .title {
+  color: #ddf;
+}
+
+body.is-forced-dark .submit {
+  background-color: #25305a;
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 8px 8px rgba(0, 0, 0, 0.25);
+}
+
+body.is-forced-dark .submit textarea {
+  background-color: rgba(0, 0, 0, 0.2);
+  color: #ddf;
+}
+
+body.is-forced-dark .submit textarea:focus {
+  box-shadow: inset 0 0 0 1px #557;
+}
+
+body.is-forced-dark .is-dark .submit textarea::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+body.is-forced-dark .submit button {
+  color: rgba(255, 255, 255, 1);
+}
+
+body.is-forced-dark .submit .bar button:disabled {
+  color: rgba(255, 255, 255, 0.3);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+body.is-forced-dark .submit .characterCount {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+body.is-forced-dark .submit .characterCount b {
+  color: #ddf;
+}
+
+body.is-forced-dark .message:first-child {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+body.is-forced-dark .message:last-child {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+body.is-forced-dark .themeswitch button {
+  transform: rotateZ(-45deg) rotateY(180deg);
+  border-color: #446;
+}
+@media (hover: hover) {
+  body.is-forced-dark .themeswitch button:hover {
+    transform: rotateZ(-45deg) rotateY(210deg) scale(1.2);
+    border-color: #eef;
+  }
+}
+
+body.is-forced-dark .themeswitch button .half:first-child {
+  background-color: #112;
+}
+
+body.is-forced-dark .messages .heart {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+body.is-forced-dark .messages .heart:disabled {
+  color: #eef;
+}

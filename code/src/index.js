@@ -1,6 +1,13 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import './index.css'
-import { App } from './App'
+/* eslint-disable react/react-in-jsx-scope */
+import { StrictMode } from 'react';
+import ReactDOM from 'react-dom';
 
-ReactDOM.render(<App />, document.getElementById('root'))
+import App from './App';
+
+const rootElement = document.getElementById('root');
+ReactDOM.render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+  rootElement
+);
