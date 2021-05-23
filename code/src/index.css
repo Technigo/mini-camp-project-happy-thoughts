@@ -1,13 +1,192 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&display=block');
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  font-family: 'Patrick Hand SC', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 14px;
+  letter-spacing: 1px;
+  background-color: #fdf3f3;
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+h1 {
+  font-size: 40px;
+  line-height: 38px;
+  font-weight: 600;
+  color: #542626;
+}
+.send-thought,
+.all-thoughts {
+  padding: 0;
+  margin: 0 auto;
+  position: relative;
+  width: 80%;
+  max-width: 600px;
+}
+.send-thought {
+  padding-top: 20px;
+  margin-bottom: 40px;
+}
+.form-send-thought {
+  position: relative;
+}
+.list-thoughts {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+.thought {
+  position: relative;
+  background: #fff;
+  border-radius: 16px;
+  width: 100%;
+  list-style: none;
+  margin-bottom: 20px;
+  transition: all .3s ease;
+  overflow: hidden;
+  border: 1px solid rgb(255,137,137,0.2);
+}
+.thought-like-link {
+  padding: 30px;
+  display: block;
+  text-decoration: none;
+  color: #542626;
+  background: none;
+  cursor: pointer;
+  letter-spacing: 1px;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-family: 'Patrick Hand SC', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+}
+.thought:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 10px rgb(255,137,137,0.15);
+}
+.thought.liked {
+  background-color: #ffcbcb;
+  transform: scale(1.05);
+}
+.thought.liked .thought-like-link {
+  cursor: default;
+}
+.thought.liked .thought-like-link .thought-date {
+  color: #b77d7d;
+}
+.thought.liked .thought-like-link .thought-message {
+  color: #542626;
+}
+.thought-message {
+  font-size: 26px;
+  line-height: 28px;
+  font-weight: 600;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.thought-date {
+  color: #bababa;
+  font-size: 16px;
+  display: block;
+  font-weight: 500;
+}
+.heart {
+  position: absolute;
+  border: none;
+  background: url("assets/heart-fill.svg") no-repeat;
+  -webkit-appearance: none;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  min-width: 24px;
+  width: auto;
+  height: 24px;
+  text-indent: 30px;
+  cursor: pointer;
+  top: 20px;
+  right: 20px;
+  font-weight: 500;
+  color: #bababa;
+}
+.liked .heart {
+  background: url("assets/heart-fill-liked.svg") no-repeat;
+  color: #d85c5c;
+  cursor: default;
+}
+.send-thought {
+  text-align: center;
+}
+.textarea {
+  background-color: #fff;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 500;
+  color: #333333;
+  padding: 25px;
+  line-height: 24px;
+  border-style: solid;
+  border-radius: 10px;
+  height: 100px;
+  width: 100%;
+  border: 2px solid #ffcbcb;
+  font-weight: 500;
+  font-size: 22px;
+}
+.textarea:hover:not(:disabled),
+.textarea:focus {
+  outline: none;
+  border: 2px solid #ecb9b9;
+}
+.textarea::placeholder {
+  color: #ccc;
+}
+.characters-left {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #bababa;
+  font-weight: 600;
+}
+.button-submit-thought {
+  background-color: #ffcbcb;
+  color: #542626;
+  font-size: 26px;
+  line-height: 28px;
+  font-weight: 600;
+  padding: 10px;
+  border-radius: 24px;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  font-family: 'Patrick Hand SC', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif !important;
+}
+.button-submit-thought:disabled {
+  opacity: .5;
+  cursor: default;
+}
+.loading {
+  text-align: center;
+  font-size: 26px;
+  line-height: 28px;
+  font-weight: 600;
+  color: #542626;
+  padding-top: 100px;
+}
+@media only screen and (max-width: 600px) {
+  .send-thought, .all-thoughts {
+    width: 90%; 
+  }
 }
