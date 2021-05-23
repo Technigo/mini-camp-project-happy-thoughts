@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
+import { API_URL } from 'Urls.js';
 
 const SendThought = (props) => {
-  const [message, updateMessage] = useState('');
+  const [message, setMessage] = useState('');
   const charactersLeft = 144 - message.length;
   const handleChange = (e) => {
-    updateMessage(e.target.value);
+    setMessage(e.target.value);
   }
-  function handleSubmit(e) {
+
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch('https://happy-thoughts-technigo.herokuapp.com/thoughts', {
+    fetch(API_URL, {
       method: 'POST',
       headers: { 'Content-type': 'application/json' },
       body: JSON.stringify({ message })
@@ -24,7 +26,7 @@ const SendThought = (props) => {
         props.setThoughts((prevData) => [data, ...prevData]);
       })
       .catch((err) => console.log(err.message));
-    updateMessage('');
+    setMessage('');
   }
   return (
     <form className="form-send-thought" onSubmit={handleSubmit}>

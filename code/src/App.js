@@ -28,11 +28,11 @@ export const App = () => {
   }, [myLikes]);
   return (
     <div className="wrapper">
-      <section id="send-thought">
+      <section className="send-thought">
         <h1>What is making you happy right now?</h1>
         <SendThought setThoughts={setThoughts} />
       </section>
-      <section id="all-thoughts">
+      <section className="all-thoughts">
         {loading && <div className="loading">Loading happy thoughts..</div>}
         {!loading && (
           <ul className="list-thoughts">
