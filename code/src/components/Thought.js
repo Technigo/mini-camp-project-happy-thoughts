@@ -4,6 +4,8 @@ import { Button, Card, CardActions, CardContent, Typography } from '@material-ui
 import Moment from 'react-moment';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 
+import { API_URL } from './../constants';
+
 const useStyles = makeStyles({
     root: {
       marginBottom: 12,
@@ -17,7 +19,7 @@ const Thought = (props) => {
 
     const handleLike = (e) => {
         e.preventDefault();
-        fetch(`https://happy-thoughts-technigo.herokuapp.com/thoughts/${props.id}/like`, {
+        fetch(`${API_URL}/${props.id}/like`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' }
         })
@@ -32,7 +34,12 @@ const Thought = (props) => {
             </Typography>
             </CardContent>
             <CardActions>
-            <Button size="small" variant="contained" onClick={handleLike}><FavoriteIcon color="secondary" /> {likes}</Button> <Moment fromNow>{props.time}</Moment>
+            <Button 
+                size="small" 
+                variant="contained" 
+                onClick={handleLike}>
+                    <FavoriteIcon color="secondary" /> {likes}
+            </Button> <Moment fromNow>{props.time}</Moment>
             </CardActions>
         </Card>
     )

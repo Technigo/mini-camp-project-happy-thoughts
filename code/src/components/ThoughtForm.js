@@ -3,6 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Button, Card, CardActions, CardContent, FormControl, TextField } from '@material-ui/core';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 
+import { API_URL } from './../constants';
+
 const useStyles = makeStyles({
     form: {
       marginBottom: 12,
@@ -15,22 +17,17 @@ const ThoughtForm = (props) => {
 
     const maximumCharacters = 140;
     const [message, setMessage] = useState('');
-    const [charactersLeft, setCharactersLeft] = useState(maximumCharacters);
 
     const handleChange = (e) => {
-        setMessage(e.target.value);
         if (maximumCharacters >= e.target.value.length) {
-            setCharactersLeft(maximumCharacters - e.target.value.length)
-        }
-        else {
-            setCharactersLeft(0)
+            setMessage(e.target.value);
         }
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        fetch('https://happy-thoughts-technigo.herokuapp.com/thoughts', {
+        fetch(API_URL, {
             method: 'POST', 
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({message})
@@ -65,8 +62,11 @@ const ThoughtForm = (props) => {
                         size="medium" 
                         variant="contained" 
                         color="secondary" 
-                        disabled={message.length < 1 || message.length > maximumCharacters}
-                        onClick={handleSubmit} ><FavoriteIcon /> Send Happy Thought <FavoriteIcon /></Button> {charactersLeft} characters left
+                        disabled={message.length < 5 || message.length > maximumCharacters}
+                        onClick={handleSubmit}>
+                            <FavoriteIcon /> Send Happy Thought <FavoriteIcon />
+                    </Button> 
+                    {maximumCharacters - message.length} characters left
                 </CardActions>
             </Card>
         </form>
